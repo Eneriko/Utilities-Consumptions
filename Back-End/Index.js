@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 //esperimento Json con file importato. Poi bisognerà aggiungere un DB vero e proprio
 const {persone} = require('./persone')
+
 //utilizziamo file nella cartella public
 app.use(express.static('public'))
 
@@ -12,13 +13,13 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.sendFile('homepage.html', {root: __dirname + "/public"})
   })
-//pagine about
-app.get('/about', (req, res) => {
-    res.sendFile('about.html', {root: __dirname + "/public"})
+//pagine consumptions
+app.get('/consumptions', (req, res) => {
+    res.sendFile('consumptions.html', {root: __dirname + "/public"})
   })
-//pagine contatti
-app.get('/contatti', (req, res) => {
-    res.sendFile('contatti.html', {root: __dirname + "/public"})
+//pagine billing
+app.get('/billing', (req, res) => {
+    res.sendFile('billing.html', {root: __dirname + "/public"})
   })
 
 //esperimento con json
