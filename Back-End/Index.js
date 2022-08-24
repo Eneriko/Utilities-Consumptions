@@ -13,14 +13,19 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.sendFile('homepage.html', {root: __dirname + "/public"})
   })
-//pagine consumptions
+//pagina consumptions
 app.get('/consumptions', (req, res) => {
     res.sendFile('consumptions.html', {root: __dirname + "/public"})
   })
-//pagine billing
+//pagina billing
 app.get('/billing', (req, res) => {
     res.sendFile('billing.html', {root: __dirname + "/public"})
   })
+
+//pagina water
+app.get('/consumptions/water', (req, res) => {
+  res.sendFile('water.html', {root: __dirname + "/public"})
+})
 
 //esperimento con json
 app.get('/persone', (req, res) => {
