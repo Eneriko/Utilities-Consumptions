@@ -2,8 +2,6 @@
 const express = require('express')
 //utlizziamo metodo express per creare istanza di express
 const app = express()
-//esperimento Json con file importato. Poi bisognerà aggiungere un DB vero e proprio
-const {persone} = require('./persone')
 
 //utilizziamo file nella cartella public
 app.use(express.static('public'))
@@ -27,23 +25,15 @@ app.get('/consumptions/water', (req, res) => {
   res.sendFile('water.html', {root: __dirname + "/public"})
 })
 
-//esperimento con json
-app.get('/persone', (req, res) => {
-  //esperimento mapping per mandare campi specifici di un oggetto Json. Idea Eneriko su presentazione dati consumi
-    const nuovePersone = persone.map((persona)=>{
-      const {nome, cognome, eta} = persona
-      return {nome,cognome,eta}
-
-    })
-    res.json(nuovePersone)
+//pagina gas
+app.get('/consumptions/gas', (req, res) => {
+  res.sendFile('gas.html', {root: __dirname + "/public"})
 })
 
-//esperimento per richiedere campi specifici su un oggetto Json. Idea Eneriko su presentazione dati consumi
-app.get('/persone/:id',(req,res)=>{
-  const {id} = req.params
-  const persona = persone.find((persona)=> persona.id === id)
-    res.json(persona)
-  })
+//pagina elettricità
+app.get('/consumptions/elett', (req, res) => {
+  res.sendFile('elett.html', {root: __dirname + "/public"})
+})
 
 //creaiamo errore per pagine che non esistono
 app.all('*', (req, res) => {
