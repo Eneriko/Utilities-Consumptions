@@ -5,8 +5,8 @@ const consumi = [
         costo: "1,092216 € per m3",
         consumoMensile: "120 m3",
         consumoGiornaliero:"4 m3",
-        costoMensile: "131,04 €",
-        costoGiornaliero: "4,36 €"
+        spesaMensile: "131,04 €",
+        spesaGiornaliero: "4,36 €"
     },
     {
         id: "2",
@@ -14,8 +14,8 @@ const consumi = [
         costo: "1,3725 per m3 €",
         consumoMensile: "30 m3",
         consumoGiornaliero:"1 m3",
-        costoMensile: "41,175 €",
-        costoGiornaliero: "1,3735 €"
+        spesaMensile: "41,175 €",
+        spesaGiornaliera: "1,3735 €"
     },
     {
         id: "3",
@@ -23,8 +23,8 @@ const consumi = [
         costo: "0,23 €/KWh",
         consumoMensile: "225 KWh",
         consumoGiornaliero:"7,5 KWh",
-        costoMensile: "51,75 €",
-        costoGiornaliero: "1,725 €"
+        spesaMensile: "51,75 €",
+        spesaGiornaliera: "1,725 €"
     }
 ]
 
