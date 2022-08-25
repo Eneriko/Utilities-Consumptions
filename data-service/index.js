@@ -15,6 +15,11 @@ app.get('/', (req,res) => {
   res.send("<h1>Homepage</h1><a href='/consumi'>Vai a consumi </a>")
 })
 
+//homapege
+app.get('/', (req,res) => {
+  res.send("<h1>Homepage</h1><a href='/consumi'>Vai a consumi </a>")
+})
+
 //Pagina con informazioni ridotte sui consumi
 app.get('/consumi', (req,res)=>{ 
   const consumoRidotto = consumi.map((consumo)=>{
