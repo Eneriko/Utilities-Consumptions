@@ -5,9 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consumptions</title>
+
+     <!--Load the AJAX API-->
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+      // Load Charts and the corechart and barchart packages.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart and bar chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Gas', 200],
+          ['Water', 150],
+          ['Electricity', 100],
+        ]);
+
+        var piechart_options = {title:'Pie Chart: Your Expenses ($) per category',
+                       width:400,
+                       height:300};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+
+        var barchart_options = {title:'Barchart: Your Expenses ($) per category',
+                       width:400,
+                       height:300,
+                       legend: 'none'};
+        var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+        barchart.draw(data, barchart_options);
+      }
+    </script>
 </head>
 <body>
     <h1>Consumptions</h1>
-    <p>Qui avremo i consumi organizzati per categorie</p>
+    <p>Overall data</p>
+
+      <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+        <tr>
+          <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+          <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+      </table>
+
+
 </body>
 </html>
