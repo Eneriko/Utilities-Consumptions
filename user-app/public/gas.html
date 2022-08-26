@@ -14,12 +14,12 @@
       google.charts.load('current', {'packages':['corechart', 'line']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawBasic);
+      google.charts.setOnLoadCallback(drawLineGas);
 
       // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
+      // instantiates the chart, passes in the data and
       // draws it.
-      function drawBasic() {
+      function drawLineGas() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -31,7 +31,7 @@
         [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
         [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
         [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-        [30, 55], [31, ]
+        [30, 55], [31, 60]
         ]);
 
         // Set chart options
@@ -52,7 +52,7 @@
 </head>
 <body>
     <h1>Gas</h1>
-    <p>Qui ci saranno i consumi specifici per il gas</p>
+    <p>Gas Monthly Consumption per Day</p>
 
      <!--Div that will hold the pie chart-->
      <div id="chart_div"></div>
