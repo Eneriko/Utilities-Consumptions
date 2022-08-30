@@ -1,5 +1,6 @@
 let usernamee 
 let passwordd 
+var tempName
 
 let users = [  //'name' will be the name displayed in homepage.html 
     {
@@ -35,9 +36,19 @@ handleLogin = () => {
     for(let i = 0; i < users.length; i++){
         if((users[i].username === usernamee) && (users[i].password === passwordd)) {
             alert("FUNZIONA!!!")
-            let url = location.href
+            tempName = users[i].name
+            
+            //let url = location.href
             //comando per richiamare la pagina "homepage.html"
         }
     }
     alert("Username or password not found.")
+}
+
+homePageElem = () => {
+    var today = new Date()
+    var day = today.getDay()
+    var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"]
+    document.getElementById('user').innerHTML = `Welcome back ${tempName}!`
+    document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} and you've already spent ...`
 }
