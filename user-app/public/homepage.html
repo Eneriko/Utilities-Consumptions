@@ -28,7 +28,8 @@
 
         var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
                         width:400,
-                        height:300};
+                        height:300,
+                        is3D: true};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
         piechart.draw(data, piechart_options);
 
