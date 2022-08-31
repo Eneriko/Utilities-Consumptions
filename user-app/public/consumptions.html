@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="final.css">
     <title>Consumptions</title>
 
      <!--Load the AJAX API-->
@@ -42,6 +43,30 @@
     </script>
 </head>
 <body>
+  <header>
+    <!--barra in alto che non si sposta mai-->
+      <nav id="navbar">  
+      <!--logo-->
+      <a href="homepage.html"><img id="logo" src="logo.jpg" alt="logo"></a>
+      <!--barra delle opzioni del menù-->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="homepage.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="consumptions.html" class="nav-link">Consumptions</a>
+          </li>
+          <li class="nav-item">
+            <a href="billing.html" class="nav-link">Billing</a>
+          </li>
+          <li class="nav-item">
+              <a href="profile.html" class="nav-link">Profile</a>  
+          </li>
+        </ul>
+  
+      </nav>
+    </header>
+    <div class="consumptions">
     <h1>Consumptions</h1>
     <p>Overall data</p>
 
@@ -52,7 +77,7 @@
           <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
         </tr>
       </table>
-
+    </div>
 
 </body>
 </html>

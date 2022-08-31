@@ -5,6 +5,73 @@
   box-sizing: border-box;
 }
 
+/*header*/
+
+/*header color background*/
+header{
+  background-color: transparent;
+ 
+}
+
+nav{
+  height: 80px;
+  display: flex; /*flexbox*/
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  margin-right: 450px;
+}
+
+/*creazione del logo*/
+#logo{
+  cursor: pointer;
+  /*per rendere il logo sempre grande uguale anche se cambio la grandezza della pagina*/
+  display: inline-block;
+  max-height: 100px;
+  width: auto;
+  
+}
+
+
+/*rimuove i punti che si formano quando crei una lista*/
+nav li{
+  list-style: none;
+}
+
+/*cambia l'aspetto delle parole nella barra*/
+.nav-link{
+  color:black;
+  text-decoration: none;
+  font-size: 20px;
+  
+}
+
+/*in questo punto cronologico viene sistemata la barra, che passa da essere sotto al logo a essere di fianco, grazie alla flex box*/
+
+
+/*trasformo il menu in una flexbox, così si passa da una lista di elementi che stavano in verticale, a una lista orrizzontale più bella da vedere*/
+nav ul{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 60px;
+
+}
+
+/*questo fa in modo che quando passi sopra alle parole del menù le caselline si illuminano*/
+.nav-item:hover{
+  background-color: lightgray;
+}
+
+/*questo fa in modo che quando passi sopra alle parole del menù esse cambiano colore*/
+.nav-link:hover{
+  color: dodgerblue;
+}
+
+
+/*login page*/
+
+
 .container{
   display: flex;
 }
@@ -42,7 +109,25 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding: 0 24px;
   margin-top: 10vh;
 }
 
+/*homepage*/
+
+.home{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/*consumptions*/
+
+.consumptions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
