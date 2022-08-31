@@ -48,7 +48,12 @@ handleLogin = () => {
 homePageElem = () => {
     var today = new Date()
     var day = today.getDay()
-    var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"]
+    var hour = today.getHours()
+    var minute = (today.getMinutes()).toString()
+    if(minute < 10){
+        var minuteStr = '0' + minute.toString()
+    }
+    var daylist = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     document.getElementById('user').innerHTML = `Welcome back ${tempName}!`
-    document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} and you've already spent ...`
+    document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]}, it's ${hour}:${minuteStr} and you've already spent ...`
 }
