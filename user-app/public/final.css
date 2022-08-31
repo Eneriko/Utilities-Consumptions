@@ -10,7 +10,9 @@
 /*header color background*/
 header{
   background-color: transparent;
- 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav{
@@ -18,8 +20,7 @@ nav{
   display: flex; /*flexbox*/
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
-  margin-right: 450px;
+  margin: auto;
 }
 
 /*creazione del logo*/
@@ -27,8 +28,9 @@ nav{
   cursor: pointer;
   /*per rendere il logo sempre grande uguale anche se cambio la grandezza della pagina*/
   display: inline-block;
-  max-height: 100px;
+  max-height: 60px;
   width: auto;
+  gap: 20px;
   
 }
 
@@ -39,7 +41,7 @@ nav li{
 }
 
 /*cambia l'aspetto delle parole nella barra*/
-.nav-link{
+nav a{
   color:black;
   text-decoration: none;
   font-size: 20px;
@@ -59,12 +61,12 @@ nav ul{
 }
 
 /*questo fa in modo che quando passi sopra alle parole del menù le caselline si illuminano*/
-.nav-item:hover{
+nav li:hover{
   background-color: lightgray;
 }
 
 /*questo fa in modo che quando passi sopra alle parole del menù esse cambiano colore*/
-.nav-link:hover{
+nav a:hover{
   color: dodgerblue;
 }
 
