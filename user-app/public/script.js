@@ -1,11 +1,11 @@
 let usernamee 
 let passwordd 
-var tempName
+let tempName;
 
 let users = [  //'name' will be the name displayed in homepage.html 
     {
-        username: "cadoniandrea",
-        password: "bacistellari33",
+        username: "dio",
+        password: "dio",
         name: "Andrea",
     },
     {
@@ -33,19 +33,36 @@ let users = [  //'name' will be the name displayed in homepage.html
 handleLogin = () => {
     let usernamee = document.getElementById('fname').value
     let passwordd = document.getElementById('lname').value
-    for(let i = 0; i < users.length; i++){
+    var x = false
+    /*for(let i = 0; i < users.length; i++){
         if((users[i].username === usernamee) && (users[i].password === passwordd)) {
-            alert("FUNZIONA!!!")
+            location.href = "homepage.html"
             tempName = users[i].name
-            
-            //let url = location.href
-            //comando per richiamare la pagina "homepage.html"
+            alert("FUNZIONA!!!")
         }
+        else if(i == users.length-1){
+            alert("Username or password not found.")
+        }
+    }*/
+    var i = 0;
+    while(i < users.length && !x){
+        
+        if((users[i].username === usernamee) && (users[i].password === passwordd)) {
+            tempName = users[i].name;
+            location.href = "homepage.html";
+            alert(tempName);
+            x = true;
+        }
+        i++;
     }
-    alert("Username or password not found.")
+    if(!x){
+        alert("dio porco");
+    }
 }
 
+
 homePageElem = () => {
+    console.log(this.tempName)
     var today = new Date()
     var day = today.getDay()
     var hour = today.getHours()
@@ -54,6 +71,6 @@ homePageElem = () => {
         var minute = '0' + minute.toString()
     }
     var daylist = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-    document.getElementById('user').innerHTML = `Welcome back ${tempName}!`
+    document.getElementById('user').innerHTML = `Welcome back `+ tempName
     document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]}, it's ${hour}:${minute} and you've already spent ...`
 }

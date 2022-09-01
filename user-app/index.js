@@ -15,7 +15,7 @@ const PORT  = 3000
 //inizializziamo richieste e risposte del server
 //homepage
 app.get('/', (req, res) => {
-    res.sendFile('homepage.html', {root: __dirname + "/public"})
+    res.sendFile('registration.html', {root: __dirname + "/public"})
   })
 //pagina consumptions
 app.get('/consumptions', (req, res) => {
