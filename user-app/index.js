@@ -13,10 +13,14 @@ app.use(express.static('public'))
 //assegnare porta 3000 a una variabile
 const PORT  = 3000
 //inizializziamo richieste e risposte del server
-//homepage
+//pagina root, sempre login
 app.get('/', (req, res) => {
     res.sendFile('registration.html', {root: __dirname + "/public"})
   })
+//pagina homepage
+  app.get('/homepage', (req, res) => {
+  res.sendFile('homepage.html', {root: __dirname + "/public"})
+})
 //pagina consumptions
 app.get('/consumptions', (req, res) => {
     res.sendFile('consumptions.html', {root: __dirname + "/public"})
