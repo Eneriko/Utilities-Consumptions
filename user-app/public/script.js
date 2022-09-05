@@ -62,7 +62,6 @@ handleLogin = () => {
 
 
 homePageElem = () => {
-    console.log(this.tempName)
     var today = new Date()
     var day = today.getDay()
     var hour = today.getHours()
@@ -73,4 +72,42 @@ homePageElem = () => {
     var daylist = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     document.getElementById('user').innerHTML = `Welcome back `+ tempName
     document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]}, it's ${hour}:${minute} and you've already spent ...`
+
+    totWater = getTotals(1.5)
+    totGas = getTotals(4)
+    totElec = getTotals(8.5)
+
+    // Load Charts and the corechart and barchart packages.
+    google.charts.load('current', {'packages':['corechart']});
+    // Draw the pie chart and bar chart when Charts is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Slices');
+    data.addRows([
+        ['Gas', totGas],
+        ['Water', totWater],
+        ['Electricity', totElec],
+    ]);
+
+        var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
+                        width:400,
+                        height:300,
+                        is3D: true};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+    }
 }
+
+function getTotals(dailyCons){
+    total = 0
+    for(let i = 0; i<31; i++){
+        var r1 = Math.floor(Math.random() * dailyCons); 
+        //data.addRows([[i,r1]])
+        total += r1
+    }
+    return total
+}
+
