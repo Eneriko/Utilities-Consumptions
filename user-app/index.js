@@ -31,17 +31,17 @@ app.get('/billing', (req, res) => {
   })
 
 //pagina water
-app.get('/consumptions/water', (req, res) => {
+app.get('/water', (req, res) => {
   res.sendFile('water.html', {root: __dirname + "/public"})
 })
 
 //pagina gas
-app.get('/consumptions/gas', (req, res) => {
+app.get('/gas', (req, res) => {
   res.sendFile('gas.html', {root: __dirname + "/public"})
 })
 
 //pagina elettricità
-app.get('/consumptions/elett', (req, res) => {
+app.get('/elett', (req, res) => {
   res.sendFile('elett.html', {root: __dirname + "/public"})
 })
 
