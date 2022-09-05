@@ -14,7 +14,7 @@
           console.log("prova "+tempName)
         // Load Charts and the corechart and barchart packages.
         google.charts.load('current', {'packages':['corechart']});
-
+        
         // Draw the pie chart and bar chart when Charts is loaded.
         google.charts.setOnLoadCallback(drawChart);
 
@@ -24,9 +24,9 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-            ['Gas', 200],
-            ['Water', 150],
-            ['Electricity', 100],
+            ['Gas', Math.floor(Math.random() * 120)],
+            ['Water', Math.floor(Math.random() * 30)],
+            ['Electricity', Math.floor(Math.random() * 270)],
         ]);
 
         var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
