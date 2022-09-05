@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="final.css">
     <title>Electricity</title>
 
     <!--Load the AJAX API-->
@@ -21,26 +22,32 @@
       // draws it.
       function drawLineWElectricity() {
 
+        totElect = 0
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('number', 'X');
         data.addColumn('number', 'Cons.Level');
-        data.addRows([
+        for(let i = 0; i<31; i++){
+            var r1 = Math.floor(Math.random() * 9); //una famiglia di 4 persone consuma in media in un anno 3200kWh, quindi 9kWh al giorno
+            data.addRows([[i,r1]])
+            totElect += r1
+        }
+        /*data.addRows([
         [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
         [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
         [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
         [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
         [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
         [30, 55], [31,60]
-        ]);
+        ]);*/
 
         // Set chart options
         var options = {'title':'Monthly Electricity Consumptions',
                        hAxis: {
-          title: 'Date'
+          title: 'Day'
         },
                        vAxis: {
-          title: 'Consumption'
+          title: 'Consumption (kWh)'
         }
     };
 
@@ -51,6 +58,29 @@
     </script>
 </head>
 <body>
+  <header>
+    <!--barra in alto che non si sposta mai-->
+      <nav id="navbar">  
+      <!--logo-->
+      <a href="homepage.html"><img id="logo" src="logo.jpg" alt="logo"></a>
+      <!--barra delle opzioni del menù-->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="homepage.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="consumptions.html" class="nav-link">Consumptions</a>
+          </li>
+          <li class="nav-item">
+            <a href="billing.html" class="nav-link">Billing</a>
+          </li>
+          <li class="nav-item">
+              <a href="profile.html" class="nav-link">Profile</a>  
+          </li>
+        </ul>
+  
+      </nav>
+    </header>
     <h1>Electricity</h1>
     <p>Electricity Monthly Consumption per Day</p>
 
