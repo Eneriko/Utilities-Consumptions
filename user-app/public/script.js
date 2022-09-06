@@ -63,6 +63,8 @@ handleLogin = () => {
 
 homePageElem = () => {
     var today = new Date()
+    var date = today.getDate()
+    var month = today.getMonth()
     var day = today.getDay()
     var hour = today.getHours()
     var minute = (today.getMinutes()).toString()
@@ -70,12 +72,18 @@ homePageElem = () => {
         var minute = '0' + minute.toString()
     }
     var daylist = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-    document.getElementById('user').innerHTML = `Welcome back `+ tempName
-    document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]}, it's ${hour}:${minute} and you've already spent ...`
+    var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    var costWat = 1.37, costGas = 1.092216, costElec = 0.276   //dati 2022 sui consumi  
 
     totWater = getTotals(1.5)
     totGas = getTotals(4)
     totElec = getTotals(8.5)
+    var costWat = 1.37*totWater, costGas = 1.092216*totGas, costElec = 0.276*totElec   //dati 2022 sui consumi per unità
+    var gigaTot = costElec + costGas + costWat
+    gigaTot = gigaTot.toFixed(2)
+
+    document.getElementById('user').innerHTML = `Welcome back `+ tempName
+    document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} ${date}, ${hour}:${minute}. In ${monthlist[month]} you've spent ${gigaTot}€`
 
     // Load Charts and the corechart and barchart packages.
     google.charts.load('current', {'packages':['corechart']});
@@ -103,7 +111,9 @@ homePageElem = () => {
 
 function getTotals(dailyCons){
     total = 0
-    for(let i = 0; i<31; i++){
+    var today = new Date()
+    var date = today.getDate()
+    for(let i = 0; i < date+1; i++){
         var r1 = Math.floor(Math.random() * dailyCons); 
         //data.addRows([[i,r1]])
         total += r1
