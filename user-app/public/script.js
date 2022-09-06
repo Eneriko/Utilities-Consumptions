@@ -1,6 +1,6 @@
 let usernamee 
 let passwordd 
-let tempName;
+let tempName
 
 let users = [  //'name' will be the name displayed in homepage.html 
     {
@@ -85,6 +85,8 @@ homePageElem = () => {
     document.getElementById('user').innerHTML = `Welcome back `+ tempName
     document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} ${date}, ${hour}:${minute}. In ${monthlist[month]} you've spent ${gigaTot}€`
 
+    // INIZIO PIECHART
+
     // Load Charts and the corechart and barchart packages.
     google.charts.load('current', {'packages':['corechart']});
     // Draw the pie chart and bar chart when Charts is loaded.
@@ -105,8 +107,25 @@ homePageElem = () => {
                         height:300,
                         is3D: true};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        function selectHandler() {
+            var selectedItem = piechart.getSelection()[0];
+            if (selectedItem) {
+                var topping = data.getValue(selectedItem.row, 0);
+                if (topping === "Gas"){
+                    location.href = "gas.html"
+                }
+                else if (topping === "Water"){
+                    location.href = "water.html"
+                }
+                else if (topping === "Electricity"){
+                    location.href = "elett.html"
+                }
+            }
+        }
+        google.visualization.events.addListener(piechart, 'select', selectHandler);
         piechart.draw(data, piechart_options);
     }
+    // FINE PIECHART
 }
 
 function getTotals(dailyCons){
@@ -120,4 +139,3 @@ function getTotals(dailyCons){
     }
     return total
 }
-
