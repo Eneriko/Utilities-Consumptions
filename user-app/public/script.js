@@ -62,9 +62,9 @@ homePageElem = () => {
     var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     var costWat = 1.37, costGas = 1.092216, costElec = 0.276   //dati 2022 sui consumi  
 
-    totWater = getTotals(1.5)
-    totGas = getTotals(4)
-    totElec = getTotals(8.5)
+    var totWater = getTotals(2)      //PERCHE' NON FUNZIONA???
+    var totGas = getTotals(4)
+    var totElec = getTotals(8.5)
     var costWat = 1.37*totWater, costGas = 1.092216*totGas, costElec = 0.276*totElec   //dati 2022 sui consumi per unità
     var gigaTot = costElec + costGas + costWat
     gigaTot = gigaTot.toFixed(2)

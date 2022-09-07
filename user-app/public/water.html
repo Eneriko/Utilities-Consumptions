@@ -9,7 +9,8 @@
 
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    <script src="consumption.js"></script>
+    <!--            <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart', 'line']});
@@ -20,6 +21,9 @@
       // Callback that creates and populates a data table,
       // instantiates the chart, passes in the data and
       // draws it.
+
+      var totWater = bestDraw(1.5)
+
       function drawLineWater() {
 
         totWater = 0
@@ -55,9 +59,9 @@
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-    </script>
+    </script>                                     -->
 </head>
-<body>
+<body onload="bestDraw(4, 'mc')">
   <header>
     <!--barra in alto che non si sposta mai-->
       <nav>  
