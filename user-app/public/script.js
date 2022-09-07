@@ -1,6 +1,5 @@
 let usernamee 
 let passwordd 
-let tempName
 
 let users = [  //'name' will be the name displayed in homepage.html 
     {
@@ -31,37 +30,25 @@ let users = [  //'name' will be the name displayed in homepage.html
 ]
 
 handleLogin = () => {
+    var x = false
     let usernamee = document.getElementById('fname').value
     let passwordd = document.getElementById('lname').value
-    var x = false
-    /*for(let i = 0; i < users.length; i++){
-        if((users[i].username === usernamee) && (users[i].password === passwordd)) {
+    for (let i = 0; i < users.length; i++) {
+        if((usernamee === users[i].username) && (passwordd === users[i].password)){
             location.href = "homepage.html"
-            tempName = users[i].name
-            alert("FUNZIONA!!!")
+            sessionStorage.setItem("name", users[i].name);
+            alert("Welcome")
+            x = true 
         }
-        else if(i == users.length-1){
-            alert("Username or password not found.")
-        }
-    }*/
-    var i = 0;
-    while(i < users.length && !x){
-        
-        if((users[i].username === usernamee) && (users[i].password === passwordd)) {
-            tempName = users[i].name;
-            location.href = "homepage.html";
-            alert(tempName);
-            x = true;
-        }
-        i++;
     }
     if(!x){
-        alert("dio porco");
+        alert("Username or password not found")
     }
 }
 
 
 homePageElem = () => {
+    let personName = sessionStorage.getItem("name");
     var today = new Date()
     var date = today.getDate()
     var month = today.getMonth()
@@ -82,7 +69,7 @@ homePageElem = () => {
     var gigaTot = costElec + costGas + costWat
     gigaTot = gigaTot.toFixed(2)
 
-    document.getElementById('user').innerHTML = `Welcome back `+ tempName
+    document.getElementById('user').innerHTML = `Welcome back `+ personName
     document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} ${date}, ${hour}:${minute}. In ${monthlist[month]} you've spent ${gigaTot}€`
 
     // INIZIO PIECHART
