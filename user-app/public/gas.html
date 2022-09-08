@@ -47,13 +47,11 @@
       var today = new Date()
       var date = today.getDate()
       var days = new Array()
-      var consu = new Array()
+      var consu = sessionStorage.getItem('gas')
+      console.log(consu.length)                   //PERCHE' LA LENGHT E' 15???????????
 
       for(let i = 0; i < date; i++){
-        days[i] = i+1
-        var r1 = Math.floor(Math.random() * 9);   
-        consu[i] = r1
-        //total += r1              
+          days[i] = i+1            
       }
       
       const labels = days

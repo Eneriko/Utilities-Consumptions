@@ -47,7 +47,8 @@ handleLogin = () => {
 }
 
 
-homePageElem = () => {
+homePageElem = (totW, totG, totE) => {
+
     let personName = sessionStorage.getItem("name");
     var today = new Date()
     var date = today.getDate()
@@ -62,60 +63,17 @@ homePageElem = () => {
     var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     var costWat = 1.37, costGas = 1.092216, costElec = 0.276   //dati 2022 sui consumi  
 
-    var totWater = getTotals(2)      //PERCHE' NON FUNZIONA???
-    var totGas = getTotals(4)
-    var totElec = getTotals(8.5)
-    var costWat = 1.37*totWater, costGas = 1.092216*totGas, costElec = 0.276*totElec   //dati 2022 sui consumi per unità
+    var costWat = 1.37*totW, costGas = 1.092216*totG, costElec = 0.276*totE   //dati 2022 sui consumi per unità
     var gigaTot = costElec + costGas + costWat
     gigaTot = gigaTot.toFixed(2)
 
     document.getElementById('user').innerHTML = `Welcome back `+ personName
     document.getElementById('todayMSG').innerHTML = `Today is ${daylist[day]} ${date}, ${hour}:${minute}. In ${monthlist[month]} you've spent ${gigaTot}€`
 
-    // INIZIO PIECHART
-
-    // Load Charts and the corechart and barchart packages.
-    google.charts.load('current', {'packages':['corechart']});
-    // Draw the pie chart and bar chart when Charts is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
-    data.addRows([
-        ['Gas', totGas],
-        ['Water', totWater],
-        ['Electricity', totElec],
-    ]);
-
-        var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
-                        width:400,
-                        height:300,
-                        is3D: true};
-        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-        function selectHandler() {
-            var selectedItem = piechart.getSelection()[0];
-            if (selectedItem) {
-                var topping = data.getValue(selectedItem.row, 0);
-                if (topping === "Gas"){
-                    location.href = "gas.html"
-                }
-                else if (topping === "Water"){
-                    location.href = "water.html"
-                }
-                else if (topping === "Electricity"){
-                    location.href = "elett.html"
-                }
-            }
-        }
-        google.visualization.events.addListener(piechart, 'select', selectHandler);
-        piechart.draw(data, piechart_options);
-    }
-    // FINE PIECHART
 }
 
-function getTotals(dailyCons){
+/*function getTotals(dailyCons) {
+
     total = 0
     var today = new Date()
     var date = today.getDate()
@@ -125,4 +83,21 @@ function getTotals(dailyCons){
         total += r1
     }
     return total
+}*/
+
+function getSbiru(dailyCons) {
+
+    var today = new Date()
+    var date = today.getDate()
+    //var days = new Array()
+    var consu = new Array()
+    //var total = 0
+
+    for(let i = 0; i < date; i++){
+        //days[i] = i+1
+        var r1 = Math.floor(Math.random() * dailyCons);   
+        consu[i] = r1
+        //total += r1              
+    }
+    return consu
 }

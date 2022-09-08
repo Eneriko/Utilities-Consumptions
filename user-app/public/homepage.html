@@ -40,8 +40,7 @@
         }
     </script>                    -->
 </head>
-<body onload="homePageElem()">
-
+<body>
   <header>
   <!--barra in alto che non si sposta mai-->
     <nav>  
@@ -75,5 +74,75 @@
           </tr>
       </table>
     </div>
+    <script>
+      var arrWater = getSbiru(4)
+      var arrGas = getSbiru(9)
+      var arrlElec = getSbiru(19)
+
+      console.log(arrGas.length)                   //LA LENGHT GIUSTAMENTE E' 8, GUARDA DOPO SETITEM NEL GAS.HTML COSA DIVENTA
+      var totalWater = 0;
+      var totalGas = 0;
+      var totalElec = 0;
+
+      for (let i = 0; i < arrWater.length; i++) {         //total Water
+          totalWater += arrWater[i];
+      }
+
+      for (let i = 0; i < arrGas.length; i++) {          //total Gas
+          totalGas += arrGas[i];
+      }
+
+      for (let i = 0; i < arrlElec.length; i++) {         //total Electricity
+          totalElec += arrlElec[i];
+      }
+
+      //sessionStorage.setItem('water', totalWater)
+      sessionStorage.setItem('gas', arrGas)
+      //sessionStorage.setItem('elec', totalElec)
+
+      // INIZIO PIECHART
+
+      // Load Charts and the corechart and barchart packages.
+      google.charts.load('current', {'packages':['corechart']});
+      // Draw the pie chart and bar chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'Slices');
+      data.addRows([
+          ['Gas', totalGas],
+          ['Water', totalWater],
+          ['Electricity', totalElec],
+      ]);
+
+          var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
+                          width:400,
+                          height:300,
+                          is3D: true};
+          var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+          function selectHandler() {
+              var selectedItem = piechart.getSelection()[0];
+              if (selectedItem) {
+                  var topping = data.getValue(selectedItem.row, 0);
+                  if (topping === "Gas"){
+                      location.href = "gas.html"
+                  }
+                  else if (topping === "Water"){
+                      location.href = "water.html"
+                  }
+                  else if (topping === "Electricity"){
+                      location.href = "elett.html"
+                  }
+              }
+          }
+          google.visualization.events.addListener(piechart, 'select', selectHandler);
+          piechart.draw(data, piechart_options);
+      }
+      // FINE PIECHART
+
+      homePageElem(totalWater, totalGas, totalElec)
+    </script>
 </body>
 </html>
