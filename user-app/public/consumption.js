@@ -1,5 +1,5 @@
 function bestDraw(dailyConsu, metric){
-    
+    //Google chart section starts 
     google.charts.load('current', {'packages':['corechart', 'line']})
     var totale = google.charts.setOnLoadCallback(drawLine)
 
@@ -27,5 +27,6 @@ function bestDraw(dailyConsu, metric){
         chart.draw(data, options);
         return total
     }
+    //Google chart section ends 
     return totale     //da linkare poi nello script quando userò i totali 
 }
