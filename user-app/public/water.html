@@ -10,56 +10,6 @@
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="consumption.js"></script>
-    <!--            <script type="text/javascript">
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart', 'line']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawLineWater);
-
-      // Callback that creates and populates a data table,
-      // instantiates the chart, passes in the data and
-      // draws it.
-
-      var totWater = bestDraw(1.5)
-
-      function drawLineWater() {
-
-        totWater = 0
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('number', 'X');
-        data.addColumn('number', 'Cons.Level');
-        for(let i = 0; i<31; i++){
-            var r1 = Math.random(); //una famiglia di 4 persone consuma in media in un anno 365mc, quindi 1mc al giorno
-            data.addRows([[i,r1]])
-            totWater += r1
-        }
-        /*data.addRows([
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-        [30, 55], [31,60]
-        ]);*/
-
-        // Set chart options
-        var options = {'title':'Monthly Water Consumptions',
-                       hAxis: {
-          title: 'Day'
-        },
-                       vAxis: {
-          title: 'Consumption (mc)'
-        }
-    };
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>                                     -->
 </head>
 <body onload="bestDraw(4, 'mc')">
   <header>
@@ -71,9 +21,6 @@
         <ul>
           <li>
             <a href="homepage.html">Home</a>
-          </li>
-          <li >
-            <a href="consumptions.html">Consumptions</a>
           </li>
           <li>
             <a href="billing.html">Billing</a>
