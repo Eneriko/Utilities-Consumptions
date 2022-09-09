@@ -37,6 +37,7 @@ handleLogin = () => {
         if((usernamee === users[i].username) && (passwordd === users[i].password)){
             location.href = "homepage.html"
             sessionStorage.setItem("name", users[i].name);
+            sessionStorage.setItem("firstLoad", "yes");
             alert("Welcome")
             x = true 
         }
@@ -47,9 +48,20 @@ handleLogin = () => {
 }
 
 
-homePageElem = (totW, totG, totE) => {
+homePageElem = () => {
 
     let personName = sessionStorage.getItem("name");
+    let firstLoad = sessionStorage.getItem("firstLoad")
+    if(firstLoad === "yes"){
+        sessionStorage.setItem("firstLoad", "no")
+        sessionStorage.setItem("arrayWater", getSbiru(4))
+        sessionStorage.setItem("TotWater", getTotals(sessionStorage.getItem("arrayWater")))
+        sessionStorage.setItem("arrayGas", getSbiru(9))
+        sessionStorage.setItem("TotGas", getTotals(sessionStorage.getItem("arrayGas")))
+        sessionStorage.setItem("arrayElettricity", getSbiru(19))
+        sessionStorage.setItem("TotElettricity", getTotals(sessionStorage.getItem("arrayElettricity")))
+    }
+
     var today = new Date()
     var date = today.getDate()
     var month = today.getMonth()
@@ -63,7 +75,10 @@ homePageElem = (totW, totG, totE) => {
     var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     var costWat = 1.37, costGas = 1.092216, costElec = 0.276   //dati 2022 sui consumi  
 
-    var costWat = 1.37*totW, costGas = 1.092216*totG, costElec = 0.276*totE   //dati 2022 sui consumi per unità
+    //dati 2022 sui consumi per unità
+    var costWat = 1.37*parseInt(sessionStorage.getItem("TotWater"))
+    var costGas = 1.092216*parseInt(sessionStorage.getItem("TotGas"))
+    var costElec = 0.276*parseInt(sessionStorage.getItem("TotElettricity")) 
     var gigaTot = costElec + costGas + costWat
     gigaTot = gigaTot.toFixed(2)
 
@@ -72,32 +87,25 @@ homePageElem = (totW, totG, totE) => {
 
 }
 
-/*function getTotals(dailyCons) {
-
-    total = 0
-    var today = new Date()
-    var date = today.getDate()
-    for(let i = 0; i < date+1; i++){
-        var r1 = Math.floor(Math.random() * dailyCons); 
-        //data.addRows([[i,r1]])
-        total += r1
+function getTotals(arrayTot){
+    var tot = 0
+    for (let i = 0; i < arrayTot.length; i++) {
+        if(arrayTot[i] != ','){
+            tot = tot + parseInt(arrayTot[i]);
+        }
     }
-    return total
-}*/
+    return tot
+}
 
 function getSbiru(dailyCons) {
 
     var today = new Date()
     var date = today.getDate()
-    //var days = new Array()
     var consu = new Array()
-    //var total = 0
 
     for(let i = 0; i < date; i++){
-        //days[i] = i+1
         var r1 = Math.floor(Math.random() * dailyCons);   
-        consu[i] = r1
-        //total += r1              
+        consu[i] = r1            
     }
     return consu
 }

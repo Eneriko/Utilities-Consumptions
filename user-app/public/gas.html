@@ -47,8 +47,13 @@
       var today = new Date()
       var date = today.getDate()
       var days = new Array()
-      var consu = sessionStorage.getItem('gas')
-      console.log(consu.length)                   //PERCHE' LA LENGHT E' 15???????????
+      var tmp = sessionStorage.getItem('arrayGas').split(",")
+      var consu = new Array()
+
+      for(let i = 0; i < tmp.length; i++){
+       
+          consu[i] = parseInt(tmp[i])    
+      }
 
       for(let i = 0; i < date; i++){
           days[i] = i+1            

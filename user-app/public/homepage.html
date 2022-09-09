@@ -75,30 +75,7 @@
       </table>
     </div>
     <script>
-      var arrWater = getSbiru(4)
-      var arrGas = getSbiru(9)
-      var arrlElec = getSbiru(19)
-
-      console.log(arrGas.length)                   //LA LENGHT GIUSTAMENTE E' 8, GUARDA DOPO SETITEM NEL GAS.HTML COSA DIVENTA
-      var totalWater = 0;
-      var totalGas = 0;
-      var totalElec = 0;
-
-      for (let i = 0; i < arrWater.length; i++) {         //total Water
-          totalWater += arrWater[i];
-      }
-
-      for (let i = 0; i < arrGas.length; i++) {          //total Gas
-          totalGas += arrGas[i];
-      }
-
-      for (let i = 0; i < arrlElec.length; i++) {         //total Electricity
-          totalElec += arrlElec[i];
-      }
-
-      //sessionStorage.setItem('water', totalWater)
-      sessionStorage.setItem('gas', arrGas)
-      //sessionStorage.setItem('elec', totalElec)
+      homePageElem()
 
       // INIZIO PIECHART
 
@@ -112,9 +89,9 @@
       data.addColumn('string', 'Topping');
       data.addColumn('number', 'Slices');
       data.addRows([
-          ['Gas', totalGas],
-          ['Water', totalWater],
-          ['Electricity', totalElec],
+          ['Gas', parseInt(sessionStorage.getItem("TotGas"))],
+          ['Water', parseInt(sessionStorage.getItem("TotWater"))],
+          ['Electricity', parseInt(sessionStorage.getItem("TotElettricity"))],
       ]);
 
           var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
@@ -142,7 +119,6 @@
       }
       // FINE PIECHART
 
-      homePageElem(totalWater, totalGas, totalElec)
     </script>
 </body>
 </html>
