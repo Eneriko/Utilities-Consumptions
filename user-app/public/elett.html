@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="final.css">
     <title>Electricity</title>
 
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="consumption.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
-<body onload="bestDraw(19, 'kWh')">
+<body>
   <header>
     <!--barra in alto che non si sposta mai-->
       <nav>  
@@ -35,7 +34,108 @@
     <h1>Electricity</h1>
     <p>Electricity Monthly Consumption per Day</p>
 
-     <!--Div that will hold the pie chart-->
-     <div id="chart_div"></div>
+    <div>
+      <canvas id="consChart"></canvas>
+    </div>
+    <div>
+      <canvas id="monthChart"></canvas>
+    </div>
+
+    <script>
+      var today = new Date()
+      var date = today.getDate()
+      var month = today.getMonth()
+      var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+      var days = new Array()
+      var tmp = sessionStorage.getItem('arrayElettricity').split(",")
+      var consu = new Array()
+      var monthArr = new Array()
+      var total = 0
+
+      for(let i = 0; i < tmp.length; i++){            //ciclo per trasferire l'array scaricato localmente
+          consu[i] = parseInt(tmp[i])    
+      }
+
+      for(let i = 0; i < consu.length; i++){        //ciclo per totale per il mese corrente
+          total += consu[i]
+      }
+      console.log(total)
+      for(let i = 0; i < date; i++){                 //ciclo per avere i giorni fino alla data corrente
+          days[i] = i+1            
+      }
+
+      for(let i = 0; i < month; i++){
+          monthArr[i] = Math.floor(Math.random() * 571)     //571 = consumo mensile medio di elettricità
+      }
+      monthArr.push(total)
+      
+      //INIZIO CHART 1
+      const labels = days
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Consumption (kWh)',
+          backgroundColor: '#F7E91A',
+          borderColor: 'rgb(255, 99, 132)',
+          pointBackgroundColor: 'black',
+          data: consu,
+          fill: true, 
+          tension: 0.3,
+        }]
+      };
+
+      const config1 = {
+        type: 'line',
+        data: data,
+        options: {
+          radius: 5,
+          hitRadius: 30,
+          hoverRadius: 15,
+          responsive: true,
+          scales: {
+            y: {
+              ticks: {
+                callback: function (value) {
+                  return value + " kWh";
+                }
+              }
+            }
+          }
+        }
+      };
+      //FINE CHART 1
+
+      //INIZIO CHART 2
+      const labels2 = monthlist
+
+      const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: 'Total Consumption/month (kWh)',
+          data: monthArr,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1,
+        }]
+      };
+
+      const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
+      };
+      //FINE CHART 2
+    </script>
+    <script>
+      const consuChart = new Chart(document.getElementById('consChart'), config1);
+      const barChart = new Chart(document.getElementById('monthChart'), config2);
+    </script>
 </body>
 </html>

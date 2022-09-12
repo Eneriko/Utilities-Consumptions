@@ -8,7 +8,6 @@
     <title>Gas</title>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="consumption.js"></script>
     
 </head>
 <body>
@@ -35,34 +34,49 @@
     <h1>Gas</h1>
     <p>Gas Monthly Consumption per Day</p>
 
-     <!--Div that will hold the pie chart-->
     <div>
-      <canvas id="myChart"></canvas>
+      <canvas id="consChart"></canvas>
+    </div>
+    <div>
+      <canvas id="monthChart"></canvas>
     </div>
 
     <script>
       var today = new Date()
       var date = today.getDate()
+      var month = today.getMonth()
+      var monthlist = ["January","February","March","April","May","June","July","August","September","October","November","December"]
       var days = new Array()
       var tmp = sessionStorage.getItem('arrayGas').split(",")
       var consu = new Array()
+      var monthArr = new Array()
+      var total = 0
 
-      for(let i = 0; i < tmp.length; i++){
-       
+      for(let i = 0; i < tmp.length; i++){            //ciclo per trasferire l'array scaricato localmente
           consu[i] = parseInt(tmp[i])    
       }
 
-      for(let i = 0; i < date; i++){
+      for(let i = 0; i < consu.length; i++){        //ciclo per totale per il mese corrente
+          total += consu[i]
+      }
+      console.log(total)
+      for(let i = 0; i < date; i++){                 //ciclo per avere i giorni fino alla data corrente
           days[i] = i+1            
       }
+
+      for(let i = 0; i < month; i++){
+          monthArr[i] = Math.floor(Math.random() * 241)     //241 = consumo mensile medio di gas
+      }
+      monthArr.push(total)
       
+      //INIZIO CHART 1
       const labels = days
 
       const data = {
         labels: labels,
         datasets: [{
           label: 'Consumption (smc)',
-          backgroundColor: 'rgb(255, 99, 132)',
+          backgroundColor: '#7C7C7C',
           borderColor: 'rgb(255, 99, 132)',
           pointBackgroundColor: 'black',
           data: consu,
@@ -71,7 +85,7 @@
         }]
       };
 
-      const config = {
+      const config1 = {
         type: 'line',
         data: data,
         options: {
@@ -90,10 +104,38 @@
           }
         }
       };
+      //FINE CHART 1
+
+      //INIZIO CHART 2
+      const labels2 = monthlist
+
+      const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: 'Total Consumption/month (smc)',
+          data: monthArr,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1,
+        }]
+      };
+
+      const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
+      };
+      //FINE CHART 2
     </script>
     <script>
-      const myChart = new Chart(
-      document.getElementById('myChart'), config);
+      const consuChart = new Chart(document.getElementById('consChart'), config1);
+      const barChart = new Chart(document.getElementById('monthChart'), config2);
     </script>
 </body>
 </html>
