@@ -43,10 +43,11 @@
 <body>
   <header>
   <!--barra in alto che non si sposta mai-->
-    <nav>  
+      
     <!--logo-->
     <a href="homepage.html"><img id="logo" src="logo.jpg" alt="logo"></a>
     <!--barra delle opzioni del menù-->
+    <nav>
       <ul>
         <li>
           <a href="homepage.html">Home</a>
@@ -63,13 +64,14 @@
   </header>
     <div class="home">
       <h1>Homepage</h1>
-      <p id="user">Welcome back user</p> <a href="consumptions.html">Track your consumptions!</a>
+      <p id="user">Welcome back user</p> <p> Track your consumptions!</p>
       <p id="todayMSG">Today is... and you've already spent...</p>
-      <table class="columns">
+      
           <tr>
-            <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+            <td>
+              <div id="piechart_div" style="border: 1px solid #ccc"></div></td>
           </tr>
-      </table>
+      
     </div>
     <script>
       homePageElem()
@@ -92,8 +94,8 @@
       ]);
 
           var piechart_options = {//title:'Pie Chart: Your Expenses ($) per category',
-                          width:400,
-                          height:300,
+                          width:800,
+                          height:600,
                           is3D: true};
           var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
           function selectHandler() {
