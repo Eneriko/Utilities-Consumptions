@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "a0025351-19fe-40ef-b6ca-1800d78abf5c",
+		"name": "projectSweng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1321309"
+	},
+	"item": [
+		{
+			"name": "Register new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"bozzinicola\",\n    \"password\": \"Pluto11\",\n    \"name\": \"Nicola\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5050/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5050/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+        {
+			"name": "Get sensor state",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5060/sensors/sensor-001",
+					"host": [
+						"localhost"
+					],
+					"port": "5060",
+					"path": [
+						"sensors",
+						"sensor-001"
+					]
+				}
+			},
+			"response": []
+		},
+        {
+			"name": "Get all bills",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5070/bills",
+					"host": [
+						"localhost"
+					],
+					"port": "5070",
+					"path": [
+						"bills"
+					]
+				}
+			},
+			"response": []
+		},
+        {
+			"name": "Notifying events to the main hub",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5100/events",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+        {
+			"name": "Configuring sensor ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sensorid\": \"sensor-001\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5100/id ",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"id "
+					]
+				}
+			},
+			"response": []
+		}
+    ]
+}
