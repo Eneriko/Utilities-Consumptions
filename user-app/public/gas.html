@@ -56,10 +56,9 @@
           consu[i] = parseInt(tmp[i])    
       }
 
-      for(let i = 0; i < consu.length; i++){        //ciclo per totale per il mese corrente
-          total += consu[i]
-      }
+      total = sessionStorage.getItem('TotGas')
       console.log(total)
+      
       for(let i = 0; i < date; i++){                 //ciclo per avere i giorni fino alla data corrente
           days[i] = i+1            
       }
