@@ -51,6 +51,33 @@
 			},
 			"response": []
 		},
+		{
+			"name": "Register a new sensor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"sensor-002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5060/sensors",
+					"host": [
+						"localhost"
+					],
+					"port": "5060",
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		}
         {
 			"name": "Get sensor state",
 			"request": {
