@@ -4,7 +4,7 @@ const express = require('express')
 //utlizziamo metodo express per creare istanza di express
 const app = express()
 
-//non so a cosa serve
+//require is Node.js global function that allows you to extract contents from module.exports object inside some file.
 const path = require('path');
 
 //utilizziamo file nella cartella public
@@ -12,7 +12,9 @@ app.use(express.static('public'))
 
 //assegnare porta 3000 a una variabile
 const PORT  = 3000
+
 //inizializziamo richieste e risposte del server
+
 //pagina root, sempre login
 app.get('/', (req, res) => {
     res.sendFile('registration.html', {root: __dirname + "/public"})
