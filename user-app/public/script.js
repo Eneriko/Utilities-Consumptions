@@ -1,10 +1,15 @@
-            let usernamee 
+let usernamee 
 let passwordd 
 
 let users = [  //'name' will be the name displayed in homepage.html 
     {
-        username: "dio",
-        password: "dio",
+        username: "test",
+        password: "test",
+        name: "Tester",
+    },
+    {
+        username: "cadoniandrea",
+        password: "barca33",
         name: "Andrea",
     },
     {
