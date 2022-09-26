@@ -1,2 +1,8 @@
 #Software Engineering Project
-software engineering
+Organization: 
+- Account Service
+- User App
+- Api
+
+Description:
+User App: running on port 3000
